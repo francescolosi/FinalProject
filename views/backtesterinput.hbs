@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Home Page</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+
+</head>
+<body>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mx-auto">
+          <h2>Backtester Input Form</h2>
+          <p class="lead">Fill in all the fields to customize your own trading strategy.
+          </p>
+        </div>
+      </div><br>
+
+      <form method="post" action="/sendFields">
+        <div class="row">
+            <p></p>
+            <div class="col-md-5">
+                <!--<p>Choose short dated moving average here (Up to 100)</p>-->
+                <p>Choose Starting Day Here</p>
+                <div class="form-group">
+                    <div class="slidecontainer">
+                        <input class="slider" id="shortdatedSMA" min='2' max="100" name="shortdatedSMA" type="range" required value="50"
+                        />
+                         <p id="shortDatedVal" class="text-center"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <p></p>
+            <div class="col-md-5">
+               <!-- <p>Choose long dated moving average here (Up to 250)</p>-->
+                    <p>Choose Final Day Here</p>  
+                <div class="form-group">
+                    <div class="slidecontainer">
+                        <input class="slider" id="longdatedSMA" min='1' max="250" name="longdated" type="range" required value="150"
+                        />
+                         <p id="longDatedVal" class="text-center"></p>
+                        <script>
+                            var slider = document.getElementById("longdatedSMA");
+                            var output = document.getElementById("longDatedVal");
+                            output.innerHTML = slider.value; // Display the default slider value
+
+                            // Update the current slider value (each time you drag the slider handle)
+                            slider.oninput = function() {
+                            output.innerHTML = this.value;
+                            }
+                            var slider2 = document.getElementById("shortdatedSMA");
+                            var output2 = document.getElementById("shortDatedVal");
+                            output2.innerHTML = slider2.value; // Display the default slider value
+
+                            // Update the current slider value (each time you drag the slider handle)
+                            slider2.oninput = function() {
+                            output2.innerHTML = this.value;
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">               
+                    <p>Stock Ticker/Symbol</p>
+                <div class="form-group">
+                    <input class="form-control" id="ticker" name="ticker" type="text" placeholder="(Ex.MSFT)" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+            <p>Starting Cash</p>
+                <div class="form-group">
+                    <input class="form-control" id="startingCash" name="startingCash" type="text" required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <p>Comssion per Buy Trade</p>
+                <div class="form-group">
+                    <input class="form-control" id="buyComiss" name="buyComiss" type="text" required/>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <p>Comssion per Sell Trade</p>
+                <div class="form-group">
+                    <input class="form-control" id="sellComiss" name="sellComiss" type="text" required/>
+                </div>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-success pull-right" value="Retrieve Results" />
+    </form>
+    </div>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark fixed-bottom">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom JavaScript for this theme -->
+  <script src="js/scrolling-nav.js"></script>
+
+</body>
+
+</html>
